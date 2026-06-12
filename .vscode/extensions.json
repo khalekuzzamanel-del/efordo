@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "Dart-Code.flutter",
+    "Dart-Code.dart-code",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "nrwl.angular-console",
+    "alexkrechik.cucumberautocomplete",
+    "eamodio.gitlens",
+    "mikestead.dotenv"
+  ]
+}

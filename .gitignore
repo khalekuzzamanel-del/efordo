@@ -1,0 +1,83 @@
+# ===========================
+# Flutter / Dart
+# ===========================
+**/flutter_app/.dart_tool/
+**/flutter_app/build/
+**/flutter_app/.flutter-plugins
+**/flutter_app/.flutter-plugins-dependencies
+**/flutter_app/.packages
+**/flutter_app/.pub-cache/
+**/flutter_app/.pub/
+**/flutter_app/*.iml
+**/flutter_app/ios/.symlinks/
+**/flutter_app/ios/Pods/
+**/flutter_app/ios/Runner.xcworkspace/
+**/flutter_app/android/.gradle/
+**/flutter_app/android/local.properties
+**/flutter_app/android/key.properties
+**/flutter_app/.idea/
+**/flutter_app/.metadata
+**/flutter_app/coverage/
+
+# ===========================
+# Node.js / NestJS
+# ===========================
+**/api/node_modules/
+**/api/dist/
+**/api/coverage/
+**/api/.parcel-cache/
+**/api/.cache/
+**/api/*.tsbuildinfo
+**/api/.nyc_output/
+
+# ===========================
+# Environment Files
+# ===========================
+.env
+.env.*
+!.env.example
+!.env.template
+
+# ===========================
+# IDE - General
+# ===========================
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+
+# ===========================
+# VS Code (except recommended settings/extensions)
+# ===========================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# ===========================
+# OS Files
+# ===========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ===========================
+# Logs
+# ===========================
+*.log
+npm-debug.log*
+
+# ===========================
+# Misc
+# ===========================
+*.pid
+*.seed
+*.pid.lock
+**/secrets/
+**/credentials/
