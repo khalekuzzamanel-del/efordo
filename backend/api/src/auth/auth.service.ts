@@ -64,7 +64,7 @@ export class AuthService {
       throw new BadRequestException('Registration failed: No user returned');
     }
 
-    // Create profile record
+    // Create profile record using admin client (bypasses RLS)
     await this.usersService.createProfile(
       {
         username: normalizedUsername,

@@ -29,10 +29,11 @@ CREATE POLICY "Users can update own profile"
     USING (auth.uid() = supabase_user_id);
 
 -- Service role can insert profiles (for registration)
+-- NestJS backend uses the service_role key for this operation
 CREATE POLICY "Service role can insert profiles"
     ON public.profiles
     FOR INSERT
-    WITH CHECK (true);
+    WITH CHECK (auth.role() = 'service_role');
 
 -- 4. Create indexes for case-insensitive lookups
 CREATE UNIQUE INDEX IF NOT EXISTS idx_profiles_username_lower

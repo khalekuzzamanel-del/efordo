@@ -50,7 +50,8 @@ export class UsersService {
   }
 
   async createProfile(dto: CreateProfileDto, supabaseUserId: string): Promise<Profile> {
-    const { data, error } = await this.supabaseService.client
+    // Use admin client to bypass RLS — service_role is required for profile inserts
+    const { data, error } = await this.supabaseService.adminClient
       .from('profiles')
       .insert({
         supabase_user_id: supabaseUserId,
