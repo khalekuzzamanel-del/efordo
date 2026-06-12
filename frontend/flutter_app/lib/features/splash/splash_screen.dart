@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 import '../authentication/providers/auth_notifier.dart';
-import '../authentication/providers/auth_state.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
@@ -29,16 +27,6 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
-    // Navigate based on auth state
-    ref.listen<AuthState>(authNotifierProvider, (previous, next) {
-      if (!mounted) return;
-      if (next.status == AuthStatus.authenticated) {
-        context.go('/dashboard');
-      } else if (next.status == AuthStatus.unauthenticated) {
-        context.go('/login');
-      }
-    });
 
     return Scaffold(
       body: Center(

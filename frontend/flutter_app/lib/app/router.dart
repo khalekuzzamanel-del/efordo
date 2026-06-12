@@ -17,12 +17,11 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final routerProvider = Provider<GoRouter>((ref) {
-  final authState = ref.watch(authNotifierProvider);
-
-  return GoRouter(
+  final router = GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: '/splash',
     redirect: (context, state) {
+      final authState = ref.read(authNotifierProvider);
       final isLoggedIn = authState.status == AuthStatus.authenticated;
       final isAuthRoute = state.matchedLocation == '/login' ||
           state.matchedLocation == '/register';
@@ -89,4 +88,15 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
     ],
   );
+
+  // Listen for auth state changes to navigate away from splash
+  ref.listen(authNotifierProvider, (previous, next) {
+    if (next.status == AuthStatus.authenticated) {
+      router.go('/dashboard');
+    } else if (next.status == AuthStatus.unauthenticated) {
+      router.go('/login');
+    }
+  });
+
+  return router;
 });

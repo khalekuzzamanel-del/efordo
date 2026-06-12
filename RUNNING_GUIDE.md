@@ -235,12 +235,71 @@ flutter run -d chrome --web-port 5000
 
 ### 4.5 Run on Mobile (Android/iOS)
 
+#### Prerequisites
+
+- **Android:** USB debugging enabled on your device
+- **Windows:** Install [Google USB Driver](https://developer.android.com/studio/run/oem-usb) if needed
+- **iOS (macOS only):** Xcode installed, iOS device trusted
+
+#### Connect Your Device
+
+1. Enable **Developer options** and **USB debugging** on your Android device
+2. Connect via USB cable
+3. Verify the device is detected:
+
 ```bash
-# List available devices
+flutter devices
+```
+
+**Expected output:** Your device listed as `mobile`:
+```
+POCO F1 • af6fb2f8 • android-arm64 • Android 12 (API 32)
+```
+
+#### Configure API URL for Physical Device
+
+When running on a physical device, `localhost` refers to the device itself, **not** your development machine. The app will fail to connect to the backend if `API_BASE_URL=http://localhost:3000`.
+
+👉 Update `frontend/flutter_app/.env` to use your **machine's local IP address**:
+
+```env
+# Windows: Run `ipconfig` to find your IPv4 address (e.g., 192.168.1.100)
+# macOS/Linux: Run `ifconfig` or `ip addr`
+API_BASE_URL=http://192.168.1.100:3000
+```
+
+Make sure the device is on the **same Wi-Fi network** as your development machine.
+
+> **Alternative for Android (requires ADB):** You can use `adb reverse` to tunnel `localhost`:
+> ```bash
+> adb reverse tcp:3000 tcp:3000
+> ```
+> Then keep `API_BASE_URL=http://localhost:3000` — this forwards the device's `localhost:3000` to your machine.
+
+#### Run the App
+
+```bash
+# List available devices (copy the device ID)
 flutter devices
 
-# Run on specific device
-flutter run -d <device-id>
+# Run on specific device by name
+flutter run -d "POCO F1"
+
+# Or use device ID
+flutter run -d af6fb2f8
+```
+
+**First run:** ~2–5 minutes (builds APK, installs, and launches).
+**Subsequent runs:** ~30–60 seconds.
+
+#### Build APK (without running)
+
+```bash
+flutter build apk --debug
+# Output: build/app/outputs/flutter-apk/app-debug.apk
+
+flutter build apk --release
+# Output: build/app/outputs/flutter-apk/app-release.apk
 ```
 
 ### 4.6 Build for Production
