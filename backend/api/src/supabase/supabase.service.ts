@@ -1,6 +1,7 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import WebSocket from 'ws';
 
 @Injectable()
 export class SupabaseService implements OnModuleInit {
@@ -20,10 +21,14 @@ export class SupabaseService implements OnModuleInit {
       );
     }
 
-    this._client = createClient(url, anonKey);
+    this._client = createClient(url, anonKey, {
+      realtime: { transport: WebSocket as any },
+    });
 
     if (serviceRoleKey) {
-      this._adminClient = createClient(url, serviceRoleKey);
+      this._adminClient = createClient(url, serviceRoleKey, {
+        realtime: { transport: WebSocket as any },
+      });
     }
   }
 
