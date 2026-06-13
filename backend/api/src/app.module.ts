@@ -9,6 +9,8 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { WorkspacesModule } from './workspaces/workspaces.module';
 import { ProjectsModule } from './projects/projects.module';
+import { RoomsModule } from './rooms/rooms.module';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { ProjectsModule } from './projects/projects.module';
     UsersModule,
     WorkspacesModule,
     ProjectsModule,
+    RoomsModule,
+    MessagesModule,
     ScheduleModule.forRoot(),
   ],
   controllers: [AppController],

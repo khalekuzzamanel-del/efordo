@@ -20,8 +20,8 @@ class AppShell extends ConsumerWidget {
     // Sync navigation index with current route
     final navItems = [
       const _NavItem(Icons.dashboard_outlined, 'Dashboard', '/dashboard'),
+      const _NavItem(Icons.meeting_room_outlined, 'Rooms', '/rooms'),
       const _NavItem(Icons.folder_outlined, 'Projects', '/projects'),
-      const _NavItem(Icons.task_alt_outlined, 'Tasks', '/tasks'),
       const _NavItem(Icons.settings_outlined, 'Settings', '/settings'),
     ];
 

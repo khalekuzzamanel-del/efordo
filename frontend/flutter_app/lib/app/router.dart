@@ -8,6 +8,7 @@ import '../features/authentication/providers/auth_notifier.dart';
 import '../features/authentication/providers/auth_state.dart';
 import '../features/dashboard/dashboard_screen.dart';
 import '../features/projects/presentation/projects_shell.dart';
+import '../features/rooms/presentation/rooms_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/splash/splash_screen.dart';
 import '../features/tasks/tasks_screen.dart';
@@ -66,6 +67,14 @@ final routerProvider = Provider<GoRouter>((ref) {
             pageBuilder: (context, state) => NoTransitionPage(
               key: state.pageKey,
               child: const ProjectsShell(),
+            ),
+          ),
+          GoRoute(
+            path: '/rooms',
+            name: 'rooms',
+            pageBuilder: (context, state) => NoTransitionPage(
+              key: state.pageKey,
+              child: const RoomsScreen(),
             ),
           ),
           GoRoute(
