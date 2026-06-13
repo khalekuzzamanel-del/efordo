@@ -23,12 +23,18 @@
 # Node.js / NestJS
 # ===========================
 **/api/node_modules/
-**/api/dist/
+node_modules/
 **/api/coverage/
 **/api/.parcel-cache/
 **/api/.cache/
 **/api/*.tsbuildinfo
 **/api/.nyc_output/
+
+# ===========================
+# Build Output (root level for Railway compatibility)
+# ===========================
+/dist/
+**/api/dist/
 
 # ===========================
 # Environment Files
