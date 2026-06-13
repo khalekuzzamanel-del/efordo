@@ -4,13 +4,13 @@
   "private": true,
   "description": "eFordo - Chat-first shared life operating system",
   "scripts": {
-    "backend:install": "cd backend/api && npm install",
-    "backend:build": "cd backend/api && npm run build",
-    "backend:dev": "cd backend/api && npm run start:dev",
-    "backend:start": "cd backend/api && npm run start",
-    "backend:start:prod": "cd backend/api && npm run start:prod",
-    "backend:test": "cd backend/api && npm test",
-    "backend:lint": "cd backend/api && npm run lint",
+    "backend:install": "npm --prefix backend/api install",
+    "backend:build": "npm --prefix backend/api run build",
+    "backend:dev": "npm --prefix backend/api run start:dev",
+    "backend:start": "npm --prefix backend/api run start",
+    "backend:start:prod": "npm --prefix backend/api run start:prod",
+    "backend:test": "npm --prefix backend/api test",
+    "backend:lint": "npm --prefix backend/api run lint",
     "frontend:get": "cd frontend/flutter_app && flutter pub get",
     "frontend:analyze": "cd frontend/flutter_app && flutter analyze",
     "frontend:web": "cd frontend/flutter_app && flutter run -d chrome --web-port 5000",
@@ -18,8 +18,8 @@
     "frontend:build:web": "cd frontend/flutter_app && flutter build web",
     "install:all": "npm run backend:install && npm run frontend:get",
     "dev": "npm run backend:dev",
-    "build": "npm run backend:build",
-    "test": "npm run backend:test",
+    "build": "npm --prefix backend/api install --include=dev && npm --prefix backend/api run build",
+    "test": "npm --prefix backend/api test",
     "lint": "npm run backend:lint"
   }
 }
